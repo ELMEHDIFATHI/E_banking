@@ -1,0 +1,63 @@
+<div class="container mt-2">
+
+  <div class="row">
+    <div class="col col-md-3">
+      <div class="card">
+        <div class="card-header">Custemer</div>
+        <div class="card-body">
+          <ng-container *ngIf="custemer$ | async as c">
+            <div class="mb-2 mt-2">
+              <label>Name : </label>
+              <label><strong>{{c.name}}</strong></label>
+            </div>
+            <div class="mb-2 mt-2">
+              <label>email :</label>
+              <label><strong>{{c.email}}</strong></label>
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col col-md-9">
+      <div class="card">
+        <div class="card-header">Accounts</div>
+        <div class="card-body">
+          <ng-container *ngIf="customerBankAccounts | async as BankAccounts">
+            <table class="table">
+              <thead>
+              <th>Id</th>
+              <th>Type</th>
+              <th>Balance</th>
+              <th>Date of creation</th>
+              <th>InterestRate</th>
+              <th>OverDraft</th>
+
+              </thead>
+              <tbody>
+              <tr *ngFor="let ba of BankAccounts">
+                <td>{{ba.id}}</td>
+                <td>{{ba.type}}</td>
+                <td>{{ba.balance|number:'1.2-2'}}Dhs</td>
+                <td>{{ba.createdAt|date:'dd-MM-yyyy'}}</td>
+                <td>{{ba.interestRate}}</td>
+                <td>{{ba.overDraft}}</td>
+
+
+
+
+              </tr>
+              </tbody>
+
+            </table>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
